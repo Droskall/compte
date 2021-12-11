@@ -1,0 +1,26 @@
+html {
+    font-size: 62.5%;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.create {
+    text-align: center;
+    color: white;
+    font: bold 50px/80px "Helvetica", Sans-Serif;
+    letter-spacing: .2em;
+    padding: .5%;
+    background: rgba(0, 0, 0, 0.85);
+}
+
+#container {
+    text-align: center;
+}
+
+#compte {
+    text-align: center;
+}
