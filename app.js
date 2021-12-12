@@ -9,7 +9,7 @@ class CountDown {
         this.start();
     }
 
-    //Fonction du compte à rebour !
+    // Countdown function !
     timer(){
         this.display.innerHTML = this.getHours() +':'+this.getMinutes() +':'+ this.getSeconds()+':'+ this.getMilliSeconds();
 
@@ -23,37 +23,37 @@ class CountDown {
         }
     }
 
-    //Fonction pour initialiser le compte à rebour
+    //Function to initiate the countdown
     start(){
         this.intervalID = setInterval(this.timer.bind(this), 100);
         return this.intervalID;
     }
 
-    //Récupération de l'heure
+    //Time recovery
     getHours(){
         let hour = Math.floor((this.time / (1000 * 60 * 60)));
         return hour < 10 ? '0' + hour : hour ;
     }
 
-    //Récupération des minutes
+    //Minute recovery
     getMinutes(){
         let min = Math.floor((this.time / (1000 * 60)) % 60 );
         return min < 10 ? '0' + min : min;
     }
 
-    //Récupération des secondes
+    //Recovery of seconds
     getSeconds(){
         let sec = Math.floor((this.time / 1000) % 60);
         return sec < 10 ? '0' + sec : sec;
     }
 
-    //Récupération des millisecondes
+    //Milliseconds recovery
     getMilliSeconds(){
         let mSec = Math.floor((this.time / 100) % 10);
         return mSec < 10 ? '0' + mSec : mSec;
     }
 
-    //Fonction pour mettre sur pause le compte à rebour
+    //Function to pause the countdown
     stop(){
         if(this.pause){
             clearInterval(this.intervalID);
@@ -64,7 +64,7 @@ class CountDown {
     }
 }
 
-//Fonction permettant de créer les compte à rebours
+// Function to create countdowns
 function createEl(){
     let elementContent = document.createElement('div');
     elementContent.id = "content" + id;
@@ -86,23 +86,23 @@ function createEl(){
     elementContent.append(btnReset);
 }
 
-//Boutton pour créer un compte à rebour lors du clic
+// Button to create a countdown when clicking
 document.getElementById('createBtn').addEventListener('click', () => {
     createEl();
     let compteur = new CountDown();
 
-    //Boutton qui appelle la fonction pause de l'objet
+    //Button that calls the object's pause function
     document.getElementById('btnPause' + id).addEventListener('click', () => {
         compteur.pause ?  compteur.pause = false : compteur.pause = true;
         compteur.stop();
     });
 
-    //Boutton qui réinitialise le compte à rebour
+    //Button that resets the countdown
     document.getElementById('btnReset' + id).addEventListener('click', () => {
         clearInterval(compteur.intervalID);
         compteur.display.parentElement.remove();
     });
 
-    //Incrémentation de l'id pour la création des éléments !
+    //Incrementation of the id for the creation of the elements !
     id++;
 });
